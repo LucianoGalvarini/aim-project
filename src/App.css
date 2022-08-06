@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+p {
+  padding: 0px;
+  margin: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button:hover {
+  cursor: cell;
+  opacity: 0.7;
+  transition: 0.5s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  width: 100vw;
+  height: 100vh;
+  color: #e8a249;
+  background-color: #4b3c5d;
 }
 
-.App-link {
-  color: #61dafb;
+.buttons {
+  padding: 0px 80px;
+  margin: 0 30px;
+  background-color: #ce6b5d;
+  color: #ffefb9;
+  border-radius: 10px;
+  font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.difficult {
+  margin: 0 30px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.difficult button {
+  padding: 5px 10px;
+  margin: 0 10px;
+  background-color: #ce6b5d;
+  color: #ffefb9;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+/* BOX */
+
+.box {
+  width: 80%;
+  height: 80%;
+  background-color: #ffefb9;
+  border: 15px solid #ce6b5d;
+  border-radius: 30px;
+  align-items: center;
+  justify-items: center;
+}
+
+.box-buttons {
+  display: flex;
+}
+
+.easy {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.normal {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+}
+
+.hard {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+}
+
+.ball {
+  border-radius: 100%;
+  background-color: #ce6b5d;
+}
+
+.ball:hover {
+  cursor: pointer;
+}
+
+.easyBall {
+  width: 75px;
+  height: 75px;
+}
+
+.normalBall {
+  width: 50px;
+  height: 50px;
+}
+
+.hardBall {
+  width: 25px;
+  height: 25px;
 }
