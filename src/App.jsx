@@ -37,15 +37,24 @@ function App() {
   const handleStart = () => {
     setInterval(randomCreateBall, difficult.time);
     setInterval(deleteBall, difficult.time + difficult.delete);
+
+    document.getElementById("start").setAttribute("disabled", "");
+    document.getElementById("stop").removeAttribute("disabled");
+  };
+
+  const handleStop = () => {
+    window.location.reload();
   };
 
   return (
     <div className="app">
       <div className="box-buttons">
-        <button className="buttons" onClick={handleStart}>
+        <button id="start" className="buttons" onClick={handleStart}>
           Start
         </button>
-        <button className="buttons">Reset</button>
+        <button id="stop" className="buttons" onClick={handleStop} disabled>
+          Stop
+        </button>
         <div className="difficult">
           <p>Difficult</p>
           <button

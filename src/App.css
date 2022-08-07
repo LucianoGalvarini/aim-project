@@ -26,7 +26,11 @@ button:hover {
   background-color: #ce6b5d;
   color: #ffefb9;
   border-radius: 10px;
-  font-size: 30px;
+  font-size: 40px;
+}
+
+.buttons:disabled {
+  opacity: 0.3;
 }
 
 .difficult {
