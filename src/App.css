@@ -29,6 +29,16 @@ button:hover {
   font-size: 40px;
 }
 
+.clockInput {
+  text-align: center;
+  color: #ce6b5d;
+  background-color: #ffefb9;
+  font-size: 25px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
 .difficult {
   margin: 0 30px;
   text-align: center;

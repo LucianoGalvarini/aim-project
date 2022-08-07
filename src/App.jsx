@@ -9,6 +9,10 @@ function App() {
     delete: 500,
   });
 
+  const [timer, setTimer] = useState({
+    seconds: 60,
+  });
+
   const [showButton, setShowButton] = useState(true);
 
   const randomCreateBall = () => {
@@ -39,16 +43,27 @@ function App() {
   const handleStart = () => {
     setInterval(randomCreateBall, difficult.time);
     setInterval(deleteBall, difficult.time + difficult.delete);
+    setInterval(
+      () =>
+        setTimer({
+          seconds: timer.seconds--,
+        }),
+      1000
+    );
   };
 
   const handleStop = () => {
     window.location.reload();
   };
 
+  if (timer.seconds === 0) {
+    window.location.reload();
+  }
+
   return (
     <div className="app">
-      <div className="box-buttons">
-        {showButton && (
+      {showButton && (
+        <div className="box-buttons">
           <button
             id="start"
             className="buttons"
@@ -59,9 +74,50 @@ function App() {
           >
             Start
           </button>
-        )}
+          <div className="difficult">
+            <p>Difficult</p>
+            <button
+              onClick={() => {
+                setDifficult({
+                  dif: "easy",
+                  size: 75,
+                  time: 2000,
+                  delete: 800,
+                });
+              }}
+            >
+              Easy
+            </button>
+            <button
+              onClick={() => {
+                setDifficult({
+                  dif: "normal",
+                  size: 50,
+                  time: 1500,
+                  delete: 600,
+                });
+              }}
+            >
+              Normal
+            </button>
+            <button
+              onClick={() => {
+                setDifficult({
+                  dif: "hard",
+                  size: 25,
+                  time: 1000,
+                  delete: 400,
+                });
+              }}
+            >
+              Hard
+            </button>
+          </div>
+        </div>
+      )}
 
-        {showButton === false && (
+      {showButton === false && (
+        <div className="box-buttons">
           <button
             id="stop"
             className="buttons"
@@ -72,48 +128,12 @@ function App() {
           >
             Stop
           </button>
-        )}
-
-        <div className="difficult">
-          <p>Difficult</p>
-          <button
-            onClick={() => {
-              setDifficult({
-                dif: "easy",
-                size: 75,
-                time: 2000,
-                delete: 800,
-              });
-            }}
-          >
-            Easy
-          </button>
-          <button
-            onClick={() => {
-              setDifficult({
-                dif: "normal",
-                size: 50,
-                time: 1500,
-                delete: 600,
-              });
-            }}
-          >
-            Normal
-          </button>
-          <button
-            onClick={() => {
-              setDifficult({
-                dif: "hard",
-                size: 25,
-                time: 1000,
-                delete: 400,
-              });
-            }}
-          >
-            Hard
-          </button>
+          <div className="difficult">
+            <p>Temporizador</p>
+            <input className="clockInput" type="number" value={timer.seconds} />
+          </div>
         </div>
-      </div>
+      )}
       <div id="box" className="box"></div>
     </div>
   );
