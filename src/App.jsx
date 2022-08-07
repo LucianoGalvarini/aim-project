@@ -2,45 +2,41 @@ import "./App.css";
 import React, { useState } from "react";
 
 function App() {
-  const [difficult, setDifficult] = useState("normal");
-
-  const handleCreateBall = () => {
-    const box = document.getElementById("box");
-    const ball = document.createElement("div");
-    ball.setAttribute("id", "ball");
-    ball.classList.add("ball");
-
-    ball.addEventListener("click", () => {
-      box.removeChild(document.getElementById("ball"));
-    });
-
-    // ball.click
-
-    switch (difficult) {
-      case "easy":
-        box.classList.add("easy");
-        ball.classList.add("easyBall");
-        break;
-      case "normal":
-        box.classList.add("normal");
-        ball.classList.add("normalBall");
-        break;
-      case "hard":
-        box.classList.add("hard");
-        ball.classList.add("hardBall");
-        break;
-      default:
-    }
-
-    box.appendChild(ball);
-  };
+  const [difficult, setDifficult] = useState({
+    dif: "normal",
+    size: 50,
+    time: 1500,
+    delete: 500,
+  });
 
   const randomCreateBall = () => {
-    handleCreateBall();
+    const div = document.createElement("div");
+    const box = document.getElementById("box");
+    div.style.cssText =
+      "position: absolute; background-color: #ce6b5d; border-radius: 100%; cursor: pointer;";
+    div.setAttribute("id", "ball");
+
+    div.addEventListener("click", deleteBall);
+
+    div.style.width = difficult.size + "px";
+    div.style.height = difficult.size + "px";
+
+    div.style.marginTop = Math.random() * (550 - difficult.size - 1) + 1 + "px";
+    div.style.marginLeft =
+      Math.random() * (1100 - difficult.size - 1) + 1 + "px";
+
+    box.appendChild(div);
+  };
+
+  const deleteBall = () => {
+    const box = document.getElementById("box");
+    const ball = document.getElementById("ball");
+    box.removeChild(ball);
   };
 
   const handleStart = () => {
-    randomCreateBall();
+    setInterval(randomCreateBall, difficult.time);
+    setInterval(deleteBall, difficult.time + difficult.delete);
   };
 
   return (
@@ -54,21 +50,36 @@ function App() {
           <p>Difficult</p>
           <button
             onClick={() => {
-              setDifficult("easy");
+              setDifficult({
+                dif: "easy",
+                size: 75,
+                time: 2000,
+                delete: 800,
+              });
             }}
           >
             Easy
           </button>
           <button
             onClick={() => {
-              setDifficult("normal");
+              setDifficult({
+                dif: "normal",
+                size: 50,
+                time: 1500,
+                delete: 600,
+              });
             }}
           >
             Normal
           </button>
           <button
             onClick={() => {
-              setDifficult("hard");
+              setDifficult({
+                dif: "hard",
+                size: 25,
+                time: 1000,
+                delete: 400,
+              });
             }}
           >
             Hard

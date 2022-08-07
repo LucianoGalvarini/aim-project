@@ -47,10 +47,10 @@ button:hover {
 /* BOX */
 
 .box {
-  width: 80%;
-  height: 80%;
+  width: 1100px;
+  height: 550px;
   background-color: #ffefb9;
-  border: 15px solid #ce6b5d;
+  border: 15px solid #000;
   border-radius: 30px;
   align-items: center;
   justify-items: center;
@@ -58,46 +58,4 @@ button:hover {
 
 .box-buttons {
   display: flex;
-}
-
-.easy {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-}
-
-.normal {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-}
-
-.hard {
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-}
-
-.ball {
-  border-radius: 100%;
-  background-color: #ce6b5d;
-}
-
-.ball:hover {
-  cursor: pointer;
-}
-
-.easyBall {
-  width: 75px;
-  height: 75px;
-}
-
-.normalBall {
-  width: 50px;
-  height: 50px;
-}
-
-.hardBall {
-  width: 25px;
-  height: 25px;
 }
