@@ -9,6 +9,8 @@ function App() {
     delete: 500,
   });
 
+  const [showButton, setShowButton] = useState(true);
+
   const randomCreateBall = () => {
     const div = document.createElement("div");
     const box = document.getElementById("box");
@@ -37,9 +39,6 @@ function App() {
   const handleStart = () => {
     setInterval(randomCreateBall, difficult.time);
     setInterval(deleteBall, difficult.time + difficult.delete);
-
-    document.getElementById("start").setAttribute("disabled", "");
-    document.getElementById("stop").removeAttribute("disabled");
   };
 
   const handleStop = () => {
@@ -49,12 +48,32 @@ function App() {
   return (
     <div className="app">
       <div className="box-buttons">
-        <button id="start" className="buttons" onClick={handleStart}>
-          Start
-        </button>
-        <button id="stop" className="buttons" onClick={handleStop} disabled>
-          Stop
-        </button>
+        {showButton && (
+          <button
+            id="start"
+            className="buttons"
+            onClick={() => {
+              handleStart();
+              setShowButton(!showButton);
+            }}
+          >
+            Start
+          </button>
+        )}
+
+        {showButton === false && (
+          <button
+            id="stop"
+            className="buttons"
+            onClick={() => {
+              handleStop();
+              setShowButton(!showButton);
+            }}
+          >
+            Stop
+          </button>
+        )}
+
         <div className="difficult">
           <p>Difficult</p>
           <button

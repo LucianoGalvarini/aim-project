@@ -29,10 +29,6 @@ button:hover {
   font-size: 40px;
 }
 
-.buttons:disabled {
-  opacity: 0.3;
-}
-
 .difficult {
   margin: 0 30px;
   text-align: center;
