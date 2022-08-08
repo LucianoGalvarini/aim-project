@@ -31,7 +31,9 @@ function App() {
     div.style.marginLeft =
       Math.random() * (1100 - difficult.size - 1) + 1 + "px";
 
-    box.appendChild(div);
+    if (!box.hasChildNodes(document.getElementById("ball"))) {
+      box.appendChild(div);
+    }
   };
 
   const deleteBall = () => {
