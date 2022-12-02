@@ -13,6 +13,10 @@ function App() {
     seconds: 60,
   });
 
+  const [counter, setCounter] = useState({
+    count: 0,
+  });
+
   const [showButton, setShowButton] = useState(true);
 
   const randomCreateBall = () => {
@@ -22,7 +26,12 @@ function App() {
       "position: absolute; background-color: #ce6b5d; border-radius: 100%; cursor: pointer;";
     div.setAttribute("id", "ball");
 
-    div.addEventListener("click", deleteBall);
+    div.addEventListener("click", () => {
+      deleteBall();
+      setCounter({
+        count: counter.count++,
+      });
+    });
 
     div.style.width = difficult.size + "px";
     div.style.height = difficult.size + "px";
@@ -131,8 +140,12 @@ function App() {
             Stop
           </button>
           <div className="difficult">
-            <p>Temporizador</p>
+            <p>Timer</p>
             <input className="clockInput" type="number" value={timer.seconds} />
+          </div>
+          <div className="difficult">
+            <p>Shots</p>
+            <input className="clockInput" type="number" value={counter.count} />
           </div>
         </div>
       )}
